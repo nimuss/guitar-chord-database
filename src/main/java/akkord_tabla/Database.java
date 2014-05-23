@@ -32,7 +32,13 @@ public class Database
 	 */
 	private static ResultSet rs2 = null;
 
+	/**
+	 * Az adatbázisból lekért akkordok.
+	 */
 	private static Chord[] chord = new Chord[100];
+	/**
+	 * Egy id változó (az utolsó ID megállapításához).
+	 */
 	private static int id;
 	
 	public static Chord[] getAllChords() 
