@@ -113,6 +113,10 @@ public class Database
 		return true;	
 	}
 	
+	/**
+	 * Az utoljára felvett akkord {@code ID}-ja.
+	 * @return az utolsó ID
+	 */
 	public static int getLastId() 
 	{		
 		try 
@@ -136,6 +140,9 @@ public class Database
 		return id;
 	}
 	
+	/**
+	 * Az adatbázis kapcsolat létrehozása.
+	 */
 	public static void connect()
 	{
 		try 
@@ -161,6 +168,9 @@ public class Database
 		}
 	}
 	
+	/**
+	 * Az adatbázis kapcsolat bezárása.
+	 */
 	public static void close()
 	{
 		try 
