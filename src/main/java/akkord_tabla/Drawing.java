@@ -40,6 +40,7 @@ import javax.swing.JPanel;
 	  
 	 /**
 	  * A nyak és az akkord kirajzolása.
+	  * @param g a grafika
 	  */
 	 public void paintComponent(Graphics g) 
 	 {
