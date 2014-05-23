@@ -54,7 +54,7 @@ import javax.swing.JPanel;
 	 
 	 /**
 	  * Az akkord kirajzolása.
-	  * @param g A {@code Graphics} megadása
+	  * @param g a grafika
 	  */
 	 private void drawChord( Graphics g )
 	 {

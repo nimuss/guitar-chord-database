@@ -41,6 +41,10 @@ public class Database
 	 */
 	private static int id;
 	
+	/**
+	 * Az adatbázisban található összes akkord letöltése.
+	 * @return az összes akkord
+	 */
 	public static Chord[] getAllChords() 
 	{			
 		try 
@@ -74,6 +78,11 @@ public class Database
 		return chord;
 	}
 	
+	/**
+	 * Egy új akkord hozzáadása az adatbázishoz.
+	 * @param chord akkord
+	 * @return igen vagy nem, sikerességtől függően
+	 */
 	public static boolean insertNewChord( Chord chord ) 
 	{	
 		try 
