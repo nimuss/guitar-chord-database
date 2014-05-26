@@ -12,6 +12,14 @@ A program egy gitár akkord adatbázist kezel.
 - A lejátszásra több beépített gitár típussal is képes.
 
 
+Fordítás
+--------
+$mvn compile
+
 Futtatás
 --------
 $mvn exec:java -Dexec.mainClass="akkord_tabla.Main"
+
+Site generálás
+--------------
+$mvn site
