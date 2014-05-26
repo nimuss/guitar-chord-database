@@ -11,12 +11,22 @@ import org.slf4j.LoggerFactory;
  */
 public class Main
 {
+	/**
+	 * A naplózáshoz szükséges adattag.
+	 */
 	public static Logger logger = LoggerFactory.getLogger(Main.class);
 	
+	/**
+	 * Az adatbázis osztály.
+	 */
 	public static Database db;
 	
+	/**
+	 * Main metódus.
+	 * @param args a main() argumentumai
+	 */
 	public static void main(String[] args) 
-	{
+	{	
 		db.connect();
 		
 		final Chord[] chords = db.getAllChords();

@@ -67,7 +67,7 @@ public class Database
 					
 				chord[i] = new Chord(id,name,music,new int[]{e1,b2,g3,d4,a5,e6});		
 				
-				Main.logger.debug(chord.toString()+" akkord letöltve");
+				Main.logger.debug(chord[i] +" akkord letöltve");
 			}
 		} 
 		catch (SQLException e) 

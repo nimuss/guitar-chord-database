@@ -105,9 +105,7 @@ public class Design extends JFrame
 	private JTextField form_chordString;
 	
 	private String[] instrument;
-	private String[] instrumentMusicString;
-	private String selectedInstument;
-	
+	private String[] instrumentMusicString;	
 	
 	
 	public Design( Chord[] base ) 
@@ -132,7 +130,7 @@ public class Design extends JFrame
 				"DISTORTION_GUITAR"
 				};
 		
-		selectedInstument = instrumentMusicString[0];
+		MyPlayer.selectedInstrument = instrumentMusicString[0];
 		
 		setSize(new Dimension(500, 500));
 		setResizable(false);
@@ -449,8 +447,7 @@ public class Design extends JFrame
 			public void mouseClicked(MouseEvent arg0) 
 			{
 				Chord selected = (Chord) list.getSelectedValue();
-				//play("I[Guitar] "+selected.music+"w");
-				play(selected);
+				MyPlayer.play(selected);
 			}
 		});
 		panel_14.add(btnLejtszs);
@@ -570,7 +567,7 @@ public class Design extends JFrame
 			@Override
 			public void mousePressed(MouseEvent arg0) 
 			{
-				play( label_finger_e1.getText() );
+				MyPlayer.play( label_finger_e1.getText() );
 			}
 		});
 		btnLejtszs_1.setBackground(new Color(153, 204, 0));
@@ -604,7 +601,7 @@ public class Design extends JFrame
 			@Override
 			public void mousePressed(MouseEvent arg0) 
 			{
-				play( label_finger_b2.getText() );
+				MyPlayer.play( label_finger_b2.getText() );
 			}
 		});
 		button.setPreferredSize(new Dimension(80, 20));
@@ -638,7 +635,7 @@ public class Design extends JFrame
 			@Override
 			public void mousePressed(MouseEvent arg0) 
 			{
-				play( label_finger_g3.getText() );
+				MyPlayer.play( label_finger_g3.getText() );
 			}
 		});
 		button_1.setPreferredSize(new Dimension(80, 20));
@@ -672,7 +669,7 @@ public class Design extends JFrame
 			@Override
 			public void mousePressed(MouseEvent arg0) 
 			{
-				play( label_finger_d4.getText() );
+				MyPlayer.play( label_finger_d4.getText() );
 			}
 		});
 		button_2.setPreferredSize(new Dimension(80, 20));
@@ -706,7 +703,7 @@ public class Design extends JFrame
 			@Override
 			public void mousePressed(MouseEvent arg0) 
 			{
-				play( label_finger_a5.getText() );
+				MyPlayer.play( label_finger_a5.getText() );
 			}
 		});
 		button_3.setPreferredSize(new Dimension(80, 20));
@@ -740,7 +737,7 @@ public class Design extends JFrame
 			@Override
 			public void mousePressed(MouseEvent arg0) 
 			{
-				play( label_finger_e6.getText() );
+				MyPlayer.play( label_finger_e6.getText() );
 			}
 		});
 		button_4.setPreferredSize(new Dimension(80, 20));
@@ -768,7 +765,7 @@ public class Design extends JFrame
 			public void actionPerformed(ActionEvent e) 
 			{
 				JComboBox c = (JComboBox) e.getSource();
-                selectedInstument = instrumentMusicString[c.getSelectedIndex()];
+				MyPlayer.selectedInstrument = instrumentMusicString[c.getSelectedIndex()];
 			}
 		});
 		comboBox.setBorder(new LineBorder(Color.BLACK));
@@ -903,7 +900,7 @@ public class Design extends JFrame
 			public void stateChanged(ChangeEvent arg0) 
 			{
 				spinnerChanged();
-				play( getMusicString(0, (int) spinner.getValue() ) );
+				MyPlayer.play( MusicString.getMusicString(0, (int) spinner.getValue() ) );
 			}
 		});
 		spinner.setModel(new SpinnerNumberModel(-1, -1, 15, 1));
@@ -923,7 +920,7 @@ public class Design extends JFrame
 			public void stateChanged(ChangeEvent arg0) 
 			{
 				spinnerChanged();
-				play( getMusicString(1, (int) spinner_1.getValue() ) );
+				MyPlayer.play( MusicString.getMusicString(1, (int) spinner_1.getValue() ) );
 			}
 		});
 		spinner_1.setPreferredSize(new Dimension(50, 25));
@@ -942,7 +939,7 @@ public class Design extends JFrame
 			public void stateChanged(ChangeEvent arg0) 
 			{
 				spinnerChanged();
-				play( getMusicString(2, (int) spinner_2.getValue() ) );
+				MyPlayer.play( MusicString.getMusicString(2, (int) spinner_2.getValue() ) );
 			}
 		});
 		spinner_2.setPreferredSize(new Dimension(50, 25));
@@ -961,7 +958,7 @@ public class Design extends JFrame
 			public void stateChanged(ChangeEvent arg0) 
 			{
 				spinnerChanged();
-				play( getMusicString(3, (int) spinner_3.getValue() ) );
+				MyPlayer.play( MusicString.getMusicString(3, (int) spinner_3.getValue() ) );
 			}
 		});
 		spinner_3.setPreferredSize(new Dimension(50, 25));
@@ -980,7 +977,7 @@ public class Design extends JFrame
 			public void stateChanged(ChangeEvent arg0) 
 			{
 				spinnerChanged();
-				play( getMusicString(4, (int) spinner_4.getValue() ) );
+				MyPlayer.play( MusicString.getMusicString(4, (int) spinner_4.getValue() ) );
 			}
 		});
 		spinner_4.setPreferredSize(new Dimension(50, 25));
@@ -999,7 +996,7 @@ public class Design extends JFrame
 			public void stateChanged(ChangeEvent arg0) 
 			{
 				spinnerChanged();
-				play( getMusicString(5, (int) spinner_5.getValue() ) );
+				MyPlayer.play( MusicString.getMusicString(5, (int) spinner_5.getValue() ) );
 			}
 		});
 		spinner_5.setPreferredSize(new Dimension(50, 25));
@@ -1073,66 +1070,15 @@ public class Design extends JFrame
 		drawing2.newChord(c);
 		return c;
 	}
-	
-	public String getMusicString( int x, int y )
-	{
-		String[][] s = new String[][]{	{"E6","F6","F#6","G6","G#6","A6","A#6","B6","C7","C#7","D7","D#7","E7","F7","F#7","G7"},
-										{"B5","C6","C#6","D6","D#6","E6","F6","F#6","G6","G#6","A6","A#6","B6","C7","C#7","D7"},
-										{"G5","G#5","A5","A#5","B5","C6","C#6","D6","D#6","E6","F6","F#6","G6","G#6","A6","A#6"},
-										{"D5","D#5","E5","F5","F#5","G5","G#5","A5","A#5","B5","C6","C#6","D6","D#6","E6","F6"},
-										{"A4","A#4","B4","C5","C#5","D5","D#5","E5","F5","F#5","G5","G#5","A5","A#5","B5","C5"},
-										{"E4","F4","F#4","G4","G#4","A4","A#4","B4","C5","C#5","D5","D#5","E5","F5","F#5","G5"}	
-									 };
 		
-		if ( y < 0 )
-		{
-			return "-";
-		}
-		return s[x][y];
-	}
-	
 	public void setPrintData( Chord selected )
 	{		
-		label_finger_e1.setText(getMusicString(0, selected.e1));
-		label_finger_b2.setText(getMusicString(1, selected.b2));
-		label_finger_g3.setText(getMusicString(2, selected.g3));
-		label_finger_d4.setText(getMusicString(3, selected.d4));
-		label_finger_a5.setText(getMusicString(4, selected.a5));
-		label_finger_e6.setText(getMusicString(5, selected.e6));
-	}
-	
-	public void play( final String s )
-	{
-		Thread p = new Thread() 
-		{
-		    public void run() 
-		    {
-		        Player p = new Player();
-				p.play("I["+selectedInstument+"] "+s+"w");
-		    }  
-		};
-		p.start();
-	}
-	
-	public void play( final Chord selected )
-	{
-		Thread p = new Thread() 
-		{
-		    public void run() 
-		    {
-		    	String s = "I["+selectedInstument+"] ";
-		    	
-		    	s += selected.e6 >= 0 ? getMusicString(5, selected.e6)+"w+" : "";
-		    	s += selected.a5 >= 0 ? getMusicString(4, selected.a5)+"w+" : "";
-		    	s += selected.d4 >= 0 ? getMusicString(3, selected.d4)+"w+" : "";
-		    	s += selected.g3 >= 0 ? getMusicString(2, selected.g3)+"w+" : "";
-		    	s += selected.b2 >= 0 ? getMusicString(1, selected.b2)+"w+" : "";
-		    	s += selected.e1 >= 0 ? getMusicString(0, selected.e1)+"w" : "";
-		    	
-		        Player p = new Player();
-				p.play(s);
-		    }  
-		};
-		p.start();
-	}
+		label_finger_e1.setText(MusicString.getMusicString(0, selected.e1));
+		label_finger_b2.setText(MusicString.getMusicString(1, selected.b2));
+		label_finger_g3.setText(MusicString.getMusicString(2, selected.g3));
+		label_finger_d4.setText(MusicString.getMusicString(3, selected.d4));
+		label_finger_a5.setText(MusicString.getMusicString(4, selected.a5));
+		label_finger_e6.setText(MusicString.getMusicString(5, selected.e6));
+	}	
+
 }
