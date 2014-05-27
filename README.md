@@ -12,14 +12,20 @@ A program egy gitár akkord adatbázist kezel.
 - A lejátszásra több beépített gitár típussal is képes.
 
 
+Első lépés
+----------
+A config/connection.properties állományban beállítani az adatbázishoz szükséges felhasználónév/jelszó párost.
+Ezután kiadni a következő parancsot:
+$ mvn process-resources
+
 Fordítás
 --------
-$mvn compile
+$ mvn compile
 
 Futtatás
 --------
-$mvn exec:java -Dexec.mainClass="akkord_tabla.Main"
+$ mvn exec:java -Dexec.mainClass="akkord_tabla.Main"
 
 Site generálás
 --------------
-$mvn site
+$ mvn site

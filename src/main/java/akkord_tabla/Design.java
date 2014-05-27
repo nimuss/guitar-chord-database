@@ -867,6 +867,7 @@ public class Design extends JFrame
 					boolean b = Main.db.insertNewChord( toInsert );
 				};
 				chords = Main.db.getAllChords();
+				listData.addElement(toInsert);
 				
 			}
 		});

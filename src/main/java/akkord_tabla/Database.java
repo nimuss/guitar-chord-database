@@ -24,6 +24,17 @@ public class Database
 	private static Connection connection = null;
 	
 	/**
+	 * A felhasználónév az adatbázishoz való kapcsolathoz.
+	 * Beállítás a config/connection.properties állományban.
+	 */
+	public static final String USER = "${Database.User}";
+	/**
+	 * A jelszó az adatbázishoz való kapcsolathoz.
+	 * Beállítás a config/connection.properties állományban.
+	 */
+    public static final String PASSWORD = "${Database.Password}";
+    
+	/**
 	 * A lekérdezés megadása.
 	 */
 	private static PreparedStatement st2 = null;
@@ -159,7 +170,7 @@ public class Database
 		
 		try 
 		{
-			connection = DriverManager.getConnection("jdbc:oracle:thin:@db.inf.unideb.hu:1521:ora11g", "h_GVLAHG", "kassai");
+			connection = DriverManager.getConnection("jdbc:oracle:thin:@db.inf.unideb.hu:1521:ora11g", USER, PASSWORD);
 			Main.logger.info("A kapcsolat sikeres!");
 		} 
 		catch (SQLException e) 
